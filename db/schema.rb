@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_104410) do
+ActiveRecord::Schema.define(version: 2021_06_29_151236) do
 
   create_table "lists", force: :cascade do |t|
     t.integer "santa_id", null: false
@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2021_06_29_104410) do
     t.string "location"
     t.string "price"
     t.text "message"
-    t.integer "host_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["host_id"], name: "index_parties_on_host_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,5 +43,4 @@ ActiveRecord::Schema.define(version: 2021_06_29_104410) do
   add_foreign_key "lists", "parties"
   add_foreign_key "lists", "users", column: "receiver_id"
   add_foreign_key "lists", "users", column: "santa_id"
-  add_foreign_key "parties", "users", column: "host_id"
 end
