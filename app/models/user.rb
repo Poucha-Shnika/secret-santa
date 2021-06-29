@@ -1,4 +1,7 @@
 class User < ApplicationRecord
-  belongs_to :party
+  has_many :parties, foreign_key: :host_id
+  has_many :lists, foreign_key: :santa_id
+  has_many :lists, foreign_key: :receiver_id
+
   validates :username, :email, presence: true
 end
