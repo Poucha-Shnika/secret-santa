@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_151236) do
+ActiveRecord::Schema.define(version: 2021_07_02_121152) do
 
   create_table "lists", force: :cascade do |t|
     t.integer "santa_id", null: false
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(version: 2021_06_29_151236) do
     t.boolean "host"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "party_id"
   end
 
   add_foreign_key "lists", "parties"
   add_foreign_key "lists", "users", column: "receiver_id"
   add_foreign_key "lists", "users", column: "santa_id"
+  add_foreign_key "users", "parties"
 end
